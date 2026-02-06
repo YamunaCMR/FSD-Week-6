@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>JWT Login</title>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+<h3>Login</h3>
+Username:<input id="name"><br><br>
+Password:<input id="password" type="password"><br><br>
+<button onclick="login()">Submit</button>
+<script>
+function login() {
+  $.post("/login", {
+name: $("#name").val(),
+password: $("#password").val() }, function(res) {
+if(res.login){
+alert("JWT Token:\n\n" + res.token);   
+      } else {
+alert("\nAuthentication Failed");        
+      }
+    });
+}
+</script>
+</body>
+</html>
